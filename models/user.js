@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var timestamps = require('mongoose-timestamp');
 
 var UserSchema = Schema({
     first_name: String,
@@ -11,5 +12,6 @@ var UserSchema = Schema({
     role: String,
     image: String
 });
+UserSchema.plugin(timestamps);
 
 module.exports = mongoose.model('User', UserSchema);
