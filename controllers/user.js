@@ -19,11 +19,13 @@ function saveUser(req, res){
     user.first_name = params.first_name;
     user.last_name = params.last_name;
     user.email = params.email;
+    user.role = 'ROLE_ADMIN';
+    user.image = 'null';
 
     if(params.password){
         bcrypt.hash(params.password, null, null, function(err, hash){
             user.password = hash;
-            if(user.name != null && user.surname != null && user.email != null){
+            if(user.first_name != null && user.last_name != null && user.email != null){
                 user.save((err, userStored) => {
                     if(err){
                         res.status(500).send({message: 'Error al guardar el usuario'});
