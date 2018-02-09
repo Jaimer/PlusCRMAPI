@@ -4,6 +4,7 @@
   "description": "Plus CRM Node.JS API",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +29,9 @@
     "moment": "^2.20.1",
     "mongoose": "^5.0.1",
     "mongoose-pagination": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
   },
   "bugs": {
     "url": "https://github.com/Jaimer/PlusCRMAPI/issues"
