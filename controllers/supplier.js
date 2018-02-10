@@ -30,6 +30,66 @@ function saveSupplier(req,res){
     });
 }
 
+function updateSupplier(req, res){
+    var supplierId = req.params.id;
+    var update = req.body;
+
+    Supplier.findByIdAndUpdate(supplierId, update, (err, supplierUpdated) =>{
+        if(err){
+            res.status(500).send({message: "Error en el servidor"});
+        }else{
+            if(!supplierUpdated){
+                res.status(404).send({message: "No se pudo actualizar el proveedor"});
+            }else{
+                res.status(200).send({supplier: supplierUpdated});
+            }
+        }
+    });
+}
+
+function getSupplier(req, res){
+    var supplierId = req.params.id;
+    
+    Supplier.findById(supplierId, (err, supplier) => {
+        if(err){
+            res.status(500).send({message: "Error en el servidor"});
+        }else{
+            if(!supplier){
+                res.status(404).send({message: "No se encontró el proveedor"});
+            }else{
+                res.status(200).send({supplier});
+            }
+        }
+    });
+}
+
+function getSuppliers(req, res){
+    var itemsPerPage = parseInt(req.params.itemsPerPage);
+    if(req.params.page){
+        var page = req.params.page;
+    }else{
+        var page = 1;
+    }
+
+    Supplier.find().sort('name').paginate(page, itemsPerPage, (err, suppliers, total) => {
+        if(err){
+            res.status(500).send({message: "Error en el servidor"});
+        }else{
+            if(!suppliers){
+                res.status(404).send({message: "No se encontraron proveedores"});
+            }else{
+                res.status(200).send({
+                    total_items: total,
+                    suppliers: suppliers
+                });
+            }
+        }
+    });
+}
+
 module.exports = {
-    saveSupplier
+    saveSupplier,
+    updateSupplier,
+    getSupplier,
+    getSuppliers
 };

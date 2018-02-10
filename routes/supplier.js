@@ -10,5 +10,8 @@ var multipart = require('connect-multiparty');
 //var md_upload = multipart({ uploadDir: './uploads/users'});
 
 api.post('/supplier', md_auth.ensureAuth, SupplierController.saveSupplier);
+api.put('/supplier/:id', md_auth.ensureAuth, SupplierController.updateSupplier);
+api.get('/supplier/:id', md_auth.ensureAuth, SupplierController.getSupplier);
+api.get('/suppliers/:itemsPerPage/:page?', md_auth.ensureAuth, SupplierController.getSuppliers);
 
 module.exports = api;
