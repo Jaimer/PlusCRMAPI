@@ -9,6 +9,7 @@ var app = express();
 var user_routes = require('./routes/user');
 var supplier_routes = require('./routes/supplier');
 var product_routes = require('./routes/product');
+var client_routes = require('./routes/client');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -26,5 +27,6 @@ app.use((req, res, next) => {
 app.use('/api', user_routes);
 app.use('/api', supplier_routes);
 app.use('/api', product_routes);
+app.use('/api', client_routes);
 
 module.exports = app;
