@@ -92,4 +92,4 @@ module.exports = {
     updateClient,
     getClient,
     getClients
-}
+};

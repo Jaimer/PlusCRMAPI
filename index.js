@@ -17,7 +17,7 @@ mongoose.connect('mongodb://'+dbuser+':'+dbpassword+'@'+dbhost+':'+dbport+'/'+db
         console.log("Conexión correcta a la base de datos...");
 
         app.listen(port, function(){
-            console.log("Servidor API REST escuchando en http://localhost:"+port);
+            console.log("CRM API REST escuchando en http://localhost:"+port);
         });
     }
 });
