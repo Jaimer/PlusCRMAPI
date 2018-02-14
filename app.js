@@ -11,6 +11,7 @@ var supplier_routes = require('./routes/supplier');
 var product_routes = require('./routes/product');
 var client_routes = require('./routes/client');
 var company_routes = require('./routes/company');
+var venue_routes = require('./routes/venue');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -30,5 +31,6 @@ app.use('/api', supplier_routes);
 app.use('/api', product_routes);
 app.use('/api', client_routes);
 app.use('/api', company_routes);
+app.use('/api', venue_routes);
 
 module.exports = app;
